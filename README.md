@@ -12,8 +12,16 @@
 2. Learn about Active Record's `has_secure_password` method
 3. Sign up and in a user with a secure, encrypted password. 
 
+## Overview
+
+Passwords are an important part of keeping our user's data safe. 
+
 ## Password Encryption with BCrypt
 
-## Active Record's `has_secure_password`
+## ActiveRecord's `has_secure_password`
 
-## Instructions
+
+
+## Resources
+
+[How NOT to Store Passwords!](https://www.youtube.com/watch?v=8ZtInClXe1Q) - Computerphile on Youtube
