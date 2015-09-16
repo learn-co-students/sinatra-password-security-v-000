@@ -21,7 +21,7 @@ We've got a basic Sinatra MVC Sinatra application. In our `application_controlle
 + `get "/" do` renders an `index.erb` file with links to signup or login. 
 + `get '/signup'` renders a form to create a new user. The form includes fields form `username` and `password`. 
 + `get '/login'` renders a form for logging in.
-+ `get '/success'` renders a `success.erb` page, which should be displayed once a user successfully logs in
++ `get '/success'` renders a `success.erb` page, which should be displayed once a user successfully logs in. There is some logic in this action to double check that the user is logged in. If not, they're redirected to the `/login` page. 
 + `get '/failure'` renders a `failure.erb` page. This will be accessed if there is an error logging in or signing up. 
 + `get '/logout'` clears the session data and redirects to the home page.
 
