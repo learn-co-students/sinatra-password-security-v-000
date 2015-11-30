@@ -57,7 +57,9 @@ Run this migration using `rake db:migrate`. Awesome job!
 
 ### ActiveRecord's `has_secure_password`
 
-Next, let's update our user model so that it includes `has_secure_password`. This ActiveRecord macro gives us access to a few new methods. It works in conjunction with `bcrypt` and gives us the ability to update a password, validate the presence of a password, and authenticate a user. 
+Next, let's update our user model so that it includes `has_secure_password`. This ActiveRecord macro gives us access to a few new methods. A macro is a method that when called, creates methods for you. This is meta programming, which you don't need to worry about now. Just know that using a macros is just like calling a normal ruby method.
+
+In this case, the macro `has_secure_password` is being called just like a normal ruby method. It works in conjunction with `bcrypt` and gives us the ability to update a password, validate the presence of a password, and authenticate a user. 
 
 
 ```ruby
@@ -69,7 +71,7 @@ end
 
 ```
 
-Next, let's handle signing up. In our `post '/signup'` action, let's make a new instance of our user class with a username and password from params. Note that even though our database has a column called `password_digest`, we still access the attribute of `password`. This is given to us by `has_secure_password`. 
+Next, let's handle signing up. In our `post '/signup'` action, let's make a new instance of our user class with a username and password from params. Note that even though our database has a column called `password_digest`, we still access the attribute of `password`. This is given to us by `has_secure_password`. You can read more about that in the [Ruby Docs](http://api.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html#method-i-has_secure_password). 
 
 
 ```ruby
