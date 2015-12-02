@@ -136,3 +136,5 @@ Awesome job! We've now built out a basic authentication system for a user withou
 + [BCrypt Ruby](https://github.com/codahale/bcrypt-ruby)
 + [Ruby on Rails Guide: Has Secure Password](http://api.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html)
 + [How NOT to Store Passwords!](https://www.youtube.com/watch?v=8ZtInClXe1Q) - Computerphile on Youtube
+
+<a href='https://learn.co/lessons/sinatra-password-security' data-visibility='hidden'>View this lesson on Learn.co</a>
