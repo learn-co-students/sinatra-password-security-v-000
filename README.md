@@ -79,7 +79,7 @@ Next, let's handle signing up. In our `post '/signup'` action, let's make a new 
 		user = User.new(:username => params[:username], :password => params[:password])
 	end
 ```
-Because we our user `has_secure_password`, we won't be able to save this to the database unless our user filled out the password field. Calling `user.save` will return false if the user can't be persisted. Let's update this route so that we redirect to `'/login'` if the user is saved, or `'/failure'` if the user can't be saved. (For now, we'll make the user log in after they sign up successfully). 
+Because our user has `has_secure_password`, we won't be able to save this to the database unless our user filled out the password field. Calling `user.save` will return false if the user can't be persisted. Let's update this route so that we redirect to `'/login'` if the user is saved, or `'/failure'` if the user can't be saved. (For now, we'll make the user log in after they sign up successfully). 
 
 ```ruby
 	post "/signup" do
