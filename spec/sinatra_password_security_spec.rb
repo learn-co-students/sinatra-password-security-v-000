@@ -32,7 +32,7 @@ describe "App" do
       fill_in "username", :with => "student1"
       fill_in "password", :with => "test"
       
-      click_button "submit"
+      click_button "Sign Up"
       expect(page.current_path).to eq('/login')
       expect(page.status_code).to eq(200)
     end
