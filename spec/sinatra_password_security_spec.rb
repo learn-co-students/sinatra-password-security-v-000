@@ -8,7 +8,7 @@ describe "App" do
 
     it 'returns contains a login and signup links' do 
       get '/'
-      expect(last_response.body).to include("Please <a href='/signup'>Sign Up</a> or <a href='/login'>Log In</a> to continue")
+      expect(last_response.body).to include('Please <a href="/signup">Sign Up</a> or <a href="/login">Log In</a> to continue')
     end
   end
 
@@ -32,7 +32,7 @@ describe "App" do
       fill_in "username", :with => "student1"
       fill_in "password", :with => "test"
       
-      click_button "submit"
+      click_button "Sign Up"
       expect(page.current_path).to eq('/login')
       expect(page.status_code).to eq(200)
     end
@@ -59,7 +59,7 @@ describe "App" do
       fill_in "username", :with => "student1"
       fill_in "password", :with => "test"
       
-      click_button "submit"
+      click_button "Log In"
       expect(page.current_path).to eq('/success')
       expect(page.status_code).to eq(200)
     end
@@ -72,7 +72,7 @@ describe "App" do
       fill_in "username", :with => "student1"
       fill_in "password", :with => "test"
       
-      click_button "submit"
+      click_button "Log In"
 
       expect(page.body).to include(user.username)
     end
@@ -92,8 +92,7 @@ describe "App" do
       visit '/login'
       fill_in "username", :with => "student1"
       fill_in "password", :with => "test"
-      
-      click_button "submit"
+      click_button "Log In"
       get '/logout'
       expect(session.keys).to eq([])
       expect(session.values).to eq([])
