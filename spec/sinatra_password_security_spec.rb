@@ -1,3 +1,4 @@
+require_relative '../db/migrate/20150916154312_create_users.rb'
 describe "App" do 
 
   describe "GET '/'" do 
