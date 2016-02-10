@@ -18,4 +18,5 @@ group :development do
   gem "tux"
   gem "rspec"
   gem "capybara"
+  gem "shotgun"
 end
