@@ -16,7 +16,7 @@ We'll use an open-source gem, `bcrypt`, to implement this strategy.
   
 ## Starter Code
 
-We've got a basic Sinatra MVC Sinatra application. In our `application_controller` we have two helper methods defined: `logged_in?` returns true or false based on the presence of a `session[:user_id]` and `current_user` returns the instance of the logged in user, based on the `session[:user_id]`. We have five actions defined: 
+We've got a basic Sinatra MVC application. In our `application_controller` we have two helper methods defined: `logged_in?` returns true or false based on the presence of a `session[:user_id]` and `current_user` returns the instance of the logged in user, based on the `session[:user_id]`. We have five actions defined: 
 
 + `get "/" do` renders an `index.erb` file with links to signup or login. 
 + `get '/signup'` renders a form to create a new user. The form includes fields form `username` and `password`. 
@@ -139,4 +139,6 @@ Awesome job! We've now built out a basic authentication system for a user withou
 + [Ruby on Rails Guide: Has Secure Password](http://api.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html)
 + [How NOT to Store Passwords!](https://www.youtube.com/watch?v=8ZtInClXe1Q) - Computerphile on Youtube
 
-<p data-visibility='hidden'>View <a href='https://learn.co/lessons/sinatra-password-security' title='Securing Passwords'>Securing Passwords</a> on Learn.co and start learning to code for free.</p>
+<a href='https://learn.co/lessons/sinatra-password-security' data-visibility='hidden'>View this lesson on Learn.co</a>
+
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/sinatra-password-security'>Securing Passwords in Sinatra</a> on Learn.co and start learning to code for free.</p>
