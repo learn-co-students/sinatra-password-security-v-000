@@ -16,6 +16,7 @@ GEM
       tzinfo (~> 1.1)
     arel (6.0.3)
     bcrypt (3.1.10)
+    bcrypt (3.1.10-x86-mingw32)
     bond (0.5.1)
     builder (3.2.2)
     capybara (2.5.0)
@@ -36,10 +37,17 @@ GEM
     minitest (5.8.0)
     nokogiri (1.6.7)
       mini_portile2 (~> 2.0.0.rc2)
+    nokogiri (1.6.7-x86-mingw32)
+      mini_portile2 (~> 2.0.0.rc2)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry (0.10.1-x86-mingw32)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+      win32console (~> 1.3)
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
@@ -77,6 +85,7 @@ GEM
       sinatra (~> 1.0)
     slop (3.6.0)
     sqlite3 (1.3.10)
+    sqlite3 (1.3.10-x86-mingw32)
     thread_safe (0.3.5)
     tilt (2.0.1)
     tux (0.3.0)
@@ -86,11 +95,13 @@ GEM
       sinatra (>= 1.2.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    win32console (1.3.2-x86-mingw32)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
 PLATFORMS
   ruby
+  x86-mingw32
 
 DEPENDENCIES
   activerecord
@@ -104,6 +115,3 @@ DEPENDENCIES
   sinatra-activerecord
   sqlite3
   tux
-
-BUNDLED WITH
-   1.10.6
