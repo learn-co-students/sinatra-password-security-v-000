@@ -125,7 +125,7 @@ We also need to check if that user's password matches up with our password_diges
 			session[:user_id] = user.id
 			redirect "/success"
 		else
-			redirect "failure"
+			redirect "/failure"
 		end
 	end
 ```
