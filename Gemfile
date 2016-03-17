@@ -1,6 +1,7 @@
 # A sample Gemfile
 source "https://rubygems.org"
 
+require 'capybara/dsl'
 gem "sinatra"
 gem "activerecord"
 gem "sinatra-activerecord"
