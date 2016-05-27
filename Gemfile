@@ -13,9 +13,5 @@ gem "pry"
 gem "sqlite3"
 
 group :development do
-  gem "pry"
-  gem "sqlite3"
   gem "tux"
-  gem "rspec"
-  gem "capybara"
 end
