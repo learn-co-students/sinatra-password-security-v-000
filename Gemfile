@@ -9,6 +9,7 @@ gem "bcrypt"
 gem "rspec"
 gem "require_all"
 gem "capybara"
+gem "shotgun"
 gem "pry"
 gem "sqlite3"
 
