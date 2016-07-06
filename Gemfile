@@ -6,6 +6,7 @@ gem "activerecord"
 gem "sinatra-activerecord"
 gem "rake"
 gem "bcrypt"
+gem 'mime-types-data', '~> 3.2016', '>= 3.2016.0521'
 gem "rspec"
 gem "require_all"
 gem "capybara"
