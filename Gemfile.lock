@@ -98,6 +98,7 @@ DEPENDENCIES
   activerecord
   bcrypt
   capybara
+  mime-types-data (~> 3.2016, >= 3.2016.0221)
   pry
   rake
   require_all
@@ -108,4 +109,4 @@ DEPENDENCIES
   tux
 
 BUNDLED WITH
-   1.10.6
+   1.12.5

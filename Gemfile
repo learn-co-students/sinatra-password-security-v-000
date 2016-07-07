@@ -11,6 +11,7 @@ gem "require_all"
 gem "capybara"
 gem "pry"
 gem "sqlite3"
+gem 'mime-types-data', '~> 3.2016', '>= 3.2016.0221'
 
 group :development do
   gem "pry"
