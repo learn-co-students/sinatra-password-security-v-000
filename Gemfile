@@ -11,6 +11,7 @@ gem "require_all"
 gem "capybara"
 gem "pry"
 gem "sqlite3"
+gem 'rack-commonlogger', '~> 2.0'
 
 group :development do
   gem "pry"
