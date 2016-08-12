@@ -135,13 +135,15 @@ We also need to check if that user's password matches up with our password_diges
 
 Awesome job! We've now built out a basic authentication system for a user without storing a plain-text password in our database.
 
-## Resources
+## Video Review
 
+* [Authentication](https://github.com/learn-co-curriculum/sinatra-video-review-authentication) 
+
+## Resources
 
 + [BCrypt Ruby](https://github.com/codahale/bcrypt-ruby)
 + [Ruby on Rails Guide: Has Secure Password](http://api.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html)
 + [How NOT to Store Passwords!](https://www.youtube.com/watch?v=8ZtInClXe1Q) - Computerphile on Youtube
 
-<a href='https://learn.co/lessons/sinatra-password-security' data-visibility='hidden'>View this lesson on Learn.co</a>
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/sinatra-password-security'>Securing Passwords in Sinatra</a> on Learn.co and start learning to code for free.</p>
