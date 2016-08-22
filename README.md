@@ -1,12 +1,16 @@
 # Securing Passwords
 
+## Overview 
+
+In this lesson, we'll cover bcryp, a gem that works to encrypt passwords. 
+
 ## Objectives
 
-1. Learn about bcrypt, a gem that works to encrypt passwords
-2. Learn about Active Record's `has_secure_password` method
-3. Sign up and in a user with a secure, encrypted password.
+1. Explain how bcrypt manipulates and stores passwords
+2. Use Active Record's `has_secure_password` method
+3. Sign up and in a user with a secure, encrypted password
 
-## Overview
+## Storing Users' Passwords
 
 Securing users' data is one of the most important jobs of a web developer. Despite frequent warnings against it, many of your users will use the same username and password combination across many different websites. This means that, in general, people will use the same password for our applications that they do for their bank.
 
