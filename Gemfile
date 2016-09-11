@@ -10,6 +10,7 @@ gem "rspec"
 gem "require_all"
 gem "capybara"
 gem "pry"
+gem "shotgun"
 gem "sqlite3"
 
 group :development do
