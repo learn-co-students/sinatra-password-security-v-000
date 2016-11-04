@@ -13,6 +13,7 @@ gem "pry"
 gem "sqlite3"
 
 group :development do
+  gem "shotgun"
   gem "pry"
   gem "sqlite3"
   gem "tux"
