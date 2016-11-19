@@ -11,6 +11,7 @@ gem "require_all"
 gem "capybara"
 gem "pry"
 gem "sqlite3"
+gem 'pg'
 
 group :development do
   gem "pry"
