@@ -1,8 +1,8 @@
 # Securing Passwords
 
-## Overview 
+## Overview
 
-In this lesson, we'll cover bcryp, a gem that works to encrypt passwords. 
+In this lesson, we'll cover bcryp, a gem that works to encrypt passwords.
 
 ## Objectives
 
@@ -141,7 +141,7 @@ Awesome job! We've now built out a basic authentication system for a user withou
 
 ## Video Review
 
-* [Authentication](https://www.youtube.com/watch?v=_S1s6R-_wYc) 
+* [Authentication](https://www.youtube.com/watch?v=_S1s6R-_wYc)
 
 ## Resources
 
