@@ -35,7 +35,7 @@ class ApplicationController < Sinatra::Base
 		# puts "\n*********\n* post login - I think it gets here\n*********\n"		
 		user = User.find_by(username: params[:username])
 		puts "\n*********\n* username: #{user.username}\nauth: #{user.authenticate}\n*********\n"
-		if user && user.authenticate
+		if user && user.authenticate(params[:password])
 			session[:user_id] = user.id
 			puts "\n*********\n* session: #{session}\n*********\n"
 			redirect "/success"
