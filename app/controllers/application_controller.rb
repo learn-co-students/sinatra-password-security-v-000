@@ -32,9 +32,8 @@ class ApplicationController < Sinatra::Base
 	end
 
 	post "/login" do
-		# puts "\n*********\n* post login - I think it gets here\n*********\n"		
 		user = User.find_by(username: params[:username])
-		puts "\n*********\n* username: #{user.username}\nauth: #{user.authenticate}\n*********\n"
+		# puts "\n*********\n* username: #{user.username}\nauth: #{user.authenticate}\n*********\n"
 		if user && user.authenticate(params[:password])
 			session[:user_id] = user.id
 			puts "\n*********\n* session: #{session}\n*********\n"
