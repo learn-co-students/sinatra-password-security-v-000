@@ -33,19 +33,15 @@ class ApplicationController < Sinatra::Base
 
 	post "/login" do
 		user = User.find_by(username: params[:username])
-		# puts "\n*********\n* username: #{user.username}\nauth: #{user.authenticate}\n*********\n"
 		if user && user.authenticate(params[:password])
 			session[:user_id] = user.id
-			puts "\n*********\n* session: #{session}\n*********\n"
 			redirect "/success"
 		else
-			puts "\n*********\n* redirect failure - I think it gets here\n*********\n"
 			redirect "/failure"
 		end
 	end
 
 	get "/success" do
-		puts "\n*********\n* get success - I think it gets here\n*********\n"
 		if logged_in?
 			erb :success
 		else
