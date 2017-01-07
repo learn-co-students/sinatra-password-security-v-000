@@ -18,6 +18,12 @@ class ApplicationController < Sinatra::Base
 
 	post "/signup" do
 		#your code here!
+		user = User.new(:username => params[:username], :password => params[:password])
+		if user.save
+			redirect "/login"
+		else
+			redirect "/failure"
+	end
 	end
 
 
@@ -27,6 +33,14 @@ class ApplicationController < Sinatra::Base
 
 	post "/login" do
 		#your code here!
+		# We also need to check if that user's password matches up with our password_digest. We can use a method called authenticate. The method is provided for us by the bcrypt gem. Our authenticate method takes a string as an argument. If the string matches up against the password digest, it will return the user object, otherwise it will return false. Therefore, we can check that we have a user AND that the user is authenticated. If so, we'll set the session[:user_id] and redirect to the /success route. Otherwise, we'll redirect to the /failure route so our user can try again.
+		user = User.find_by(:username => params[:username])
+		if user && user.authenticate(params[:password])
+					session[:user_id] = user.id
+					redirect "/success"
+			else
+					redirect "/failure"
+			end
 	end
 
 	get "/success" do
