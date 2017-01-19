@@ -10,6 +10,7 @@ describe 'user' do
   end
 
   it 'has a name' do
+    # binding.pry
     user = User.new
     user.username = "Steven"
     user.password = "safepassword"
