@@ -56,6 +56,7 @@ describe "App" do
     it 'returns a 200 status code' do 
       user = User.create(:username => "student1", :password => "test")
       visit '/login'
+      binding.pry
       fill_in "username", :with => "student1"
       fill_in "password", :with => "test"
       
