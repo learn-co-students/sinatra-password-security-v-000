@@ -24,9 +24,7 @@ We've got a basic Sinatra MVC application. In our `application_controller` we ha
 
 We've also stubbed out a user model in `app/models/user.rb` that inherits from `ActiveRecord::Base`.
 
-Fork and clone this repository and run `bundle install` to get started! Preview your work by running `shotgun` and navigating to [localhost:9393](http://localhost:9393/) in your browser.
-
-***NOTE***: If you're in the Learn IDE, instead of going to [localhost:9393](http://localhost:9393/) you'll navigate to the URL output by the `shotgun` command.
+Fork and clone this repository and run `bundle install` to get started!
 
 ## Password Encryption with BCrypt
 BCrypt will store a salted, hashed version of our users' passwords in our database in a column called `password_digest`. Essentially, once a password is salted and hashed, there is no way for anyone to decode it. This method requires that hackers use a 'brute force' approach to gain access to someone's account –– still possible, but more difficult.
@@ -52,7 +50,9 @@ class CreateUsers < ActiveRecord::Migration
 end
 ```
 
-Run this migration using `rake db:migrate`. Awesome job!
+Run this migration using `rake db:migrate`. Preview your work by running `shotgun` and navigating to [localhost:9393](http://localhost:9393/) in your browser. Awesome job!
+
+***NOTE***: If you're in the Learn IDE, instead of going to [localhost:9393](http://localhost:9393/) you'll navigate to the URL output by the `shotgun` command.
 
 ### ActiveRecord's `has_secure_password`
 Next, let's update our user model so that it includes `has_secure_password`. This ActiveRecord macro gives us access to a few new methods. A macro is a method that when called, creates methods for you. This is meta programming, which you don't need to worry about now. Just know that using a macro is just like calling a normal ruby method.
