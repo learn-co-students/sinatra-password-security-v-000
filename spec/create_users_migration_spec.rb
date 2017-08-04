@@ -6,7 +6,7 @@ describe 'user' do
   before do
     sql = "DROP TABLE IF EXISTS users"
     ActiveRecord::Base.connection.execute(sql)
-    CreateUsers.new.up
+    CreateUsers.new.change
   end
 
   it 'has a name' do
