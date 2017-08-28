@@ -16,17 +16,35 @@ class ApplicationController < Sinatra::Base
 		erb :signup
 	end
 
+	# create a new instance of Iser
+	# redirect to login / failure page depending on signup
 	post "/signup" do
-		#your code here!
-	end
+		user = User.new(:username => params[:username], :password => params[:password])
 
+		if user.save
+			redirect to "/login"
+		else
+			redirect to "/failure"
+		end
+	end
 
 	get "/login" do
 		erb :login
 	end
 
+	#find user by username
+	# if we find a user with that username AND matching password,
+	# set session[:userid] and direct to success
+	# OR direct to failure page
+
 	post "/login" do
-		#your code here!
+		user = User.find_by(:username => params[:username])
+		if user && user.authenticate(params[:password])
+				session[:user_id] = user.id
+        redirect "/success"
+    else
+        redirect "/failure"
+    end
 	end
 
 	get "/success" do
