@@ -17,7 +17,15 @@ class ApplicationController < Sinatra::Base
 	end
 
 	post "/signup" do
-		#your code here!
+		user = User.new(:username => params[:username], :password => params[:password])
+
+		if user.save
+			#How does this logic work? If the user inputted something into the password field, the instance of the user class will be saved.
+			redirect '/login'
+		else
+			redirect '/failure'
+		end
+	
 	end
 
 
@@ -26,6 +34,13 @@ class ApplicationController < Sinatra::Base
 	end
 
 	post "/login" do
+		user = User.find_by(:username => params[:username])
+		if user && user.authenticate(params[:password])
+			session[:user_id] = user.id
+			redirect '/success'
+		else
+			redirect '/failure'
+		end
 		#your code here!
 	end
 
