@@ -31,12 +31,12 @@ class ApplicationController < Sinatra::Base
 
 	post "/login" do
 		user = User.find_by(:username => params[:username])
-		if user && user.authenticate(params[:password])
-        session[:user_id] = user.id
-        redirect "/success"
-    else
-        redirect "/failure"
-    end
+		if user && user.authenticate(params[:password]) #must be sure both username and password match
+			session[:user_id] = user.id
+			redirect "/success" #if user's login matched, go here
+		else
+			redirect "/failure" #if user's login didn't match, go here
+		end
 	end
 
 	get "/success" do
