@@ -1,4 +1,4 @@
-require_relative '../db/migrate/20171204230042_create_users.rb'
+require_relative '../db/migrate/20171204231913_create_users.rb'
 
 require_relative 'spec_helper'
 
