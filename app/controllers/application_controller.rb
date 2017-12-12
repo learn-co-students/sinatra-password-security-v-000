@@ -41,7 +41,7 @@ class ApplicationController < Sinatra::Base
 	end
 
 	get "/success" do
-		if logged_in?
+		if logged_in? #where is this logged_in method? why were we writing an "is_logged_in?" method?
 			erb :success
 		else
 			redirect "/login"
