@@ -15,4 +15,6 @@ gem 'shotgun'
 
 group :development do
   gem "tux"
+  gem 'sqlite3'
+  gem 'pry'
 end
