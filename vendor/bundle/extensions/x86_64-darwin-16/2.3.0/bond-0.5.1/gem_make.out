@@ -1,0 +1,16 @@
+current directory: /Users/matthewborg/developing/learn.co/sinatra/sinatra-password-security-v-000/vendor/bundle/gems/bond-0.5.1/ext/readline_line_buffer
+/Users/matthewborg/.rvm/rubies/ruby-2.3.3/bin/ruby -r ./siteconf20170217-28088-uk7zi0.rb extconf.rb
+
+current directory: /Users/matthewborg/developing/learn.co/sinatra/sinatra-password-security-v-000/vendor/bundle/gems/bond-0.5.1/ext/readline_line_buffer
+make "DESTDIR=" clean
+make: *** No rule to make target `clean'.  Stop.
+
+current directory: /Users/matthewborg/developing/learn.co/sinatra/sinatra-password-security-v-000/vendor/bundle/gems/bond-0.5.1/ext/readline_line_buffer
+make "DESTDIR="
+echo "This is a dummy extension"
+This is a dummy extension
+
+current directory: /Users/matthewborg/developing/learn.co/sinatra/sinatra-password-security-v-000/vendor/bundle/gems/bond-0.5.1/ext/readline_line_buffer
+make "DESTDIR=" install
+echo "This is a dummy extension"
+This is a dummy extension
