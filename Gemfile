@@ -12,6 +12,7 @@ gem "capybara"
 gem "pry"
 gem "sqlite3"
 gem 'shotgun'
+gem "learn-co"
 
 group :development do
   gem "tux"
