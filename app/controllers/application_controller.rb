@@ -8,42 +8,54 @@ class ApplicationController < Sinatra::Base
 		set :session_secret, "password_security"
 	end
 
-	get "/" do
+	get '/' do
 		erb :index
 	end
 
-	get "/signup" do
+	get '/signup' do
 		erb :signup
 	end
 
-	post "/signup" do
+	post '/signup' do
 		#your code here!
+		user = User.new(:username => params[:username], :password => params[:password])
+	  if user.save
+	    redirect '/login'
+    else
+	    redirect '/failure'
+    end
 	end
 
 
-	get "/login" do
+	get '/login' do
 		erb :login
 	end
 
-	post "/login" do
-		#your code here!
+	post '/login' do
+		user = User.find_by(:username => params[:username])
+		if user && user.authenticate(params[:password])
+      session[:user_id] = user.id
+      redirect "/success"
+	  else
+      redirect "/failure"
+	  end
 	end
 
-	get "/success" do
+	get '/success' do
 		if logged_in?
 			erb :success
 		else
-			redirect "/login"
+			redirect '/login'
 		end
 	end
 
-	get "/failure" do
+	get '/failure' do
 		erb :failure
 	end
 
-	get "/logout" do
+	get '/logout' do
 		session.clear
-		redirect "/"
+		redirect '/'
 	end
 
 	helpers do
