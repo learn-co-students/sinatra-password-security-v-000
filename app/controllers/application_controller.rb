@@ -1,59 +1,84 @@
 require "./config/environment"
 require "./app/models/user"
+#========================================================== 
 class ApplicationController < Sinatra::Base
-
-	configure do
+#==========================config========================== 
+	configure do 
 		set :views, "app/views"
 		enable :sessions
 		set :session_secret, "password_security"
 	end
-
-	get "/" do
-		erb :index
-	end
-
-	get "/signup" do
+#==========================routes========================== 
+  # HOME
+#---------------------------------------------------------# 
+  get '/' do 
+    erb :index
+  end
+#========================================================== 
+  # SIGNUP
+#---------------------------------------------------------# 
+	get "/signup" do 
 		erb :signup
 	end
-
-	post "/signup" do
-		#your code here!
+#---------------------------------------------------------- 
+	post "/signup" do 
+		user = User.new(params)
+		
+    if user.save 
+      redirect "/login"
+    else 
+      redirect "/failure"
+    end		
 	end
-
-
-	get "/login" do
+#========================================================== 
+  # LOGIN
+#---------------------------------------------------------# 
+	get "/login" do 
 		erb :login
 	end
 
 	post "/login" do
-		#your code here!
+	  user = User.find_by(:username => params[:username])
+	
+	  if user && user.authenticate(params[:password])
+      session[:user_id] = user.id
+      redirect "/success"
+	  else
+      redirect "/failure"
+	  end
 	end
-
-	get "/success" do
-		if logged_in?
+#---------------------------------------------------------- 
+	get "/success" do 
+		if logged_in? 
 			erb :success
-		else
+		else 
 			redirect "/login"
 		end
 	end
 
-	get "/failure" do
+	get "/failure" do 
 		erb :failure
 	end
-
-	get "/logout" do
+#========================================================== 
+  # LOGOUT
+#---------------------------------------------------------# 
+	get "/logout" do 
 		session.clear
 		redirect "/"
 	end
 
-	helpers do
-		def logged_in?
+
+#=========================================================# 
+  # HELPERS
+#---------------------------------------------------------# 
+	helpers do 
+		def logged_in? 
 			!!session[:user_id]
 		end
-
-		def current_user
+#---------------------------------------------------------- 
+		def current_user 
 			User.find(session[:user_id])
 		end
 	end
-
+#========================================================== 
 end
