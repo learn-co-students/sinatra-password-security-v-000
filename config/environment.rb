@@ -4,6 +4,7 @@ require 'capybara/dsl'
 
 require 'bundler/setup'
 Bundler.require(:default, ENV['SINATRA_ENV'])
+ActiveRecord::Base.logger.level = :info
 
 ActiveRecord::Base.establish_connection(
   :adapter => "sqlite3",
