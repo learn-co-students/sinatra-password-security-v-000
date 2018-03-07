@@ -11,7 +11,7 @@ class ApplicationController < Sinatra::Base
 
 
 	#==================== SIGN UP ===========================
-		get "/" do
+	get "/" do
 		erb :index
 	end
 	
