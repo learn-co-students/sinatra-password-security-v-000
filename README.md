@@ -132,6 +132,7 @@ end
 
 Awesome job! We've now built out a basic authentication system for a user without storing a plain-text password in our database.
 
+
 ## Video Review
 
 * [Authentication](https://www.youtube.com/watch?v=_S1s6R-_wYc)

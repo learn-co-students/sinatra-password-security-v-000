@@ -20,7 +20,6 @@ class ApplicationController < Sinatra::Base
 		#your code here!
 	end
 
-
 	get "/login" do
 		erb :login
 	end
