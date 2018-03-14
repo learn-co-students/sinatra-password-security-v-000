@@ -17,3 +17,4 @@ describe 'user' do
     expect(User.where(username: "Steven").first).to eq(user)
   end
 end
+
