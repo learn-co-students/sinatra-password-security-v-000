@@ -2,7 +2,7 @@
 source "https://rubygems.org"
 
 gem "sinatra"
-gem "activerecord"
+gem "activerecord", '4.2'
 gem "sinatra-activerecord"
 gem "rake"
 gem "bcrypt"
@@ -16,4 +16,3 @@ gem 'shotgun'
 group :development do
   gem "tux"
 end
-
