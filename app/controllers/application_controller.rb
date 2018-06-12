@@ -17,16 +17,33 @@ class ApplicationController < Sinatra::Base
 	end
 
 	post "/signup" do
-		#your code here!
-	end
+    user = User.new(:username => params[:username], :password => params[:password])
 
-	get "/login" do
-		erb :login
-	end
+    if user.save
+        redirect "/login"
+    else
+        redirect "/failure"
+    end
+end
+
+get '/login' do
+	erb :login
+end
 
 	post "/login" do
 		#your code here!
+		user = User.find_by(:username => params[:username])
+
+		if user && user.authenticate(params[:password])
+			#.authenticate helps to see if a user is signed up to use the site
+			session[:user_id] = user.id
+			redirect "/success"
+		else
+			redirect "/failure"
+		end
 	end
+
+
 
 	get "/success" do
 		if logged_in?
