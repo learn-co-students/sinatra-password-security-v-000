@@ -16,4 +16,3 @@ gem 'shotgun'
 group :development do
   gem "tux"
 end
-
