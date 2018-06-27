@@ -4,7 +4,7 @@ source "https://rubygems.org"
 gem "sinatra"
 gem "activerecord"
 gem "sinatra-activerecord"
-gem "rake"
+gem "rake", '12.3.1'
 gem "bcrypt"
 gem "rspec"
 gem "require_all"
@@ -16,4 +16,3 @@ gem 'shotgun'
 group :development do
   gem "tux"
 end
-
