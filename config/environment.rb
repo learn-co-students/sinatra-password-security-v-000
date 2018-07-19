@@ -2,6 +2,7 @@ ENV['SINATRA_ENV'] ||= "development"
 
 require 'capybara/dsl'
 require 'bundler/setup'
+require 'sinatra/activerecord'
 Bundler.require(:default, ENV['SINATRA_ENV'])
 
 ActiveRecord::Base.establish_connection(
@@ -10,4 +11,3 @@ ActiveRecord::Base.establish_connection(
 )
 
 require_all 'app'
-
