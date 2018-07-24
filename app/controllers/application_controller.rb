@@ -16,16 +16,29 @@ class ApplicationController < Sinatra::Base
 		erb :signup
 	end
 
-	post "/signup" do
-		#your code here!
-	end
-
 	get "/login" do
 		erb :login
 	end
 
 	post "/login" do
-		#your code here!
+		user = User.find_by(:username => params[:username])
+
+    if user && user.authenticate(params[:password])
+	    session[:user_id] = user.id
+	    redirect "/success"
+    else
+	    redirect "/failure"
+    end
+	end
+
+  post "/signup" do
+    user = User.new(:username => params[:username], :password => params[:password])
+
+    if user.save
+	    redirect "/login"
+    else
+	    redirect "/failure"
+    end
 	end
 
 	get "/success" do
@@ -45,6 +58,9 @@ class ApplicationController < Sinatra::Base
 		redirect "/"
 	end
 
+# A web session is a data structure that an application uses to store temporary
+# data that is useful *only* during the time a user is interacting with the
+# application, it is also specific to the user.
 	helpers do
 		def logged_in?
 			!!session[:user_id]
