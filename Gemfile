@@ -1,6 +1,6 @@
 # A sample Gemfile
 source "https://rubygems.org"
-
+gem "learn-co", "3.8.12"
 gem "sinatra"
 gem "activerecord"
 gem "sinatra-activerecord"
