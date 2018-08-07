@@ -139,7 +139,7 @@ end
 ```
 
 We also need to check if that user's password matches up with the value in `password_digest`. We can use a method called `authenticate`, which is also
-provided for us by `has_secure_password`. Our `authenticate` method takes a
+provided for us by adding `has_secure_password` to our User model. Our `authenticate` method takes a
 string as an argument. If the string matches up against the password digest,
 it will return the user object, otherwise it will return false. Therefore, we
 can check that we have a user AND that the user is authenticated. If so, we'll
