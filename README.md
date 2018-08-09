@@ -175,25 +175,32 @@ class User < ActiveRecord::Base
 end
 ```
 
-Ruby knows to add this `authenticate` method to our class (invisibly!) when the
-program runs.
+we told Ruby to add an `authenticate` method to our class (invisibly!) when the
+program runs. While we, as programmers can't see it, **it will be there**.
 
 > **ASIDE** This is one of the special powers of Ruby called
-> "_metaprogramming_".  Ruby code can run methods _on itself_ so that classes
-> gain new methods or state when the code runs! Pretty cool, Ruby and only a
-> few other languages have this ability. Using metaprogramming is
-> controversial. On the one hand, it can save developers time. On the other,
-> and we see that in this lesson, it would be nice to point to where on some
-> line, in some file, the `authenticate` method was defined.
+> "_metaprogramming_:" writing code that writes code.  Ruby code can run
+> methods _on itself_ so that classes gain new methods or state when the code
+> runs! Pretty cool! Ruby and only a few other languages have this ability.
+>
+> Using metaprogramming is controversial, though. On the one hand, it can save
+> developers time. On the other, and we see that in this lesson, it would be
+> nice to point to where on some line, in some file, the `authenticate` method
+> was defined. Reasonable developers can have difference on opinion as to
+> whether to use metaprogramming. Understanding metaprogramming perfectly  is
+> _not_ essential to being a Ruby or Rails developer.
 
-The `User`'s `authenticate` method takes a `String` as an argument. It then
-turns the string into a salted, hashed version. It then compares the salted,
-hashed argument to the user's stored salted, hashed password.  If the hashed,
-salted `String` provided matches the password digest, it will return the `User`
-object, otherwise it will return false.
+Let's step through the process of how `User`'s `authenticate` method works. It:
 
-> **IMPORTANT** Realize that at no point do we look at an unencrypted version
-> of the user's password.
+1. Takes a `String` as an argument e.g. `i_luv@byron_poodle_darling`
+2. It turns the `String` into a salted, hashed version (`76776516e058d2bf187213df6917a7e`)
+3. It compares this salted, hashed version with the user's stored salted,
+   hashed password in the database
+4. If the two versions match, `authenticate` will return the `User` instance;
+   if not, it returns `false`
+
+> **IMPORTANT** At no point do we look at an unencrypted version of the user's
+> password.
 
 In the code below, we see how we can ensure that we have a `User` AND that that
 `User` is authenticated. If the user authenticates, we'll set the
