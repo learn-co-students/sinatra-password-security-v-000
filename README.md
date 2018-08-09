@@ -163,14 +163,42 @@ end
 ```
 
 We also need to check if that user's password matches up with the value in
-`password_digest`. We can use a method called `authenticate`, which is also
-provided for us by adding `has_secure_password` to our User model. Our
-`authenticate` method takes a string as an argument. If the string matches up
-against the password digest, it will return the user object, otherwise it will
-return false. Therefore, we can check that we have a user AND that the user is
-authenticated. If so, we'll set the `session[:user_id]` and redirect to the
-`/success` route. Otherwise, we'll redirect to the `/failure` route so our user
-can try again.
+`password_digest`. Users must have both an account _and_ know the password.
+
+We validate password match by using a method called `authenticate` on our
+`User` model. We do not have write this method ourselves. Rather when we added
+the line of code to `User`:
+
+```ruby
+class User < ActiveRecord::Base
+  has_secure_password
+end
+```
+
+Ruby knows to add this `authenticate` method to our class (invisibly!) when the
+program runs.
+
+> **ASIDE** This is one of the special powers of Ruby called
+> "_metaprogramming_".  Ruby code can run methods _on itself_ so that classes
+> gain new methods or state when the code runs! Pretty cool, Ruby and only a
+> few other languages have this ability. Using metaprogramming is
+> controversial. On the one hand, it can save developers time. On the other,
+> and we see that in this lesson, it would be nice to point to where on some
+> line, in some file, the `authenticate` method was defined.
+
+The `User`'s `authenticate` method takes a `String` as an argument. It then
+turns the string into a salted, hashed version. It then compares the salted,
+hashed argument to the user's stored salted, hashed password.  If the hashed,
+salted `String` provided matches the password digest, it will return the `User`
+object, otherwise it will return false.
+
+> **IMPORTANT** Realize that at no point do we look at an unencrypted version
+> of the user's password.
+
+In the code below, we see how we can ensure that we have a `User` AND that that
+`User` is authenticated. If the user authenticates, we'll set the
+`session[:user_id]` and redirect to the `/success` route. Otherwise, we'll
+redirect to the `/failure` route so our user can try again.
 
 ```ruby
 post "/login" do
