@@ -8,15 +8,31 @@
 
 ## Overview
 
-Securing users' data is one of the most important jobs of a web developer. Despite frequent warnings against it, many of your users will use the same username and password combination across many different websites. This means that, in general, people will use the same password for our applications that they do for their bank.
+Securing users' data is one of the most important jobs of a web developer.
+Despite frequent warnings against it, many of your users will use the same
+username and password combination across many different websites. This means
+that, in general, people will use the same password for our applications that
+they do for their bank.
 
-Because of this, we never want to store our users' passwords in plain text in our database. Instead, we'll run the passwords through a hashing algorithm. A hashing algorithm manipulates data in such a way that it cannot be un-manipulated. This is to say that if someone got a hold of the hashed version of a password, they would have no way to turn it back into the original. In addition to hashing the password, we'll also add a "salt". A salt is simply a random string of characters that gets added into the hash. That way, if two of our users use the password "fido", they will end up with different hashes in our database.
+Because of this, we never want to store our users' passwords in plain text in
+our database. Instead, we'll run the passwords through a hashing algorithm. A
+hashing algorithm manipulates data in such a way that it cannot be
+un-manipulated. This is to say that if someone got a hold of the hashed version
+of a password, they would have no way to turn it back into the original. In
+addition to hashing the password, we'll also add a "salt". A salt is simply a
+random string of characters that gets added into the hash. That way, if two of
+our users use the password "fido", they will end up with different hashes in
+our database.
 
 We'll use an open-source gem, `bcrypt`, to implement this strategy.
 
 ## Starter Code
 
-We've got a basic Sinatra MVC application. In our `application_controller` we have two helper methods defined: `logged_in?` returns true or false based on the presence of a `session[:user_id]`, and `current_user` returns the instance of the logged in user, based on the `session[:user_id]`. We have six actions defined:
+We've got a basic Sinatra MVC application. In our `application_controller` we
+have two helper methods defined: `logged_in?` returns true or false based on
+the presence of a `session[:user_id]`, and `current_user` returns the instance
+of the logged in user, based on the `session[:user_id]`. We have six actions
+defined:
 
 * `get "/" do` renders an `index.erb` file with links to signup or login.
 * `get '/signup'` renders a form to create a new user. The form includes fields for `username` and `password`.
@@ -25,19 +41,26 @@ We've got a basic Sinatra MVC application. In our `application_controller` we ha
 * `get '/failure'` renders a `failure.erb` page. This will be accessed if there is an error logging in or signing up.
 * `get '/logout'` clears the session data and redirects to the homepage.
 
-We've also stubbed out a user model in `app/models/user.rb` that inherits from `ActiveRecord::Base`.
+We've also stubbed out a user model in `app/models/user.rb` that inherits from
+`ActiveRecord::Base`.
 
 Fork and clone this repository and run `bundle install` to get started!
 
 ## Password Encryption with BCrypt
 
-BCrypt will store a salted, hashed version of our users' passwords in our database in a column called `password_digest`. Essentially, once a password is salted and hashed, there is no way for anyone to decode it. This method requires that hackers use a 'brute force' approach to gain access to someone's account –– still possible, but more difficult.
+BCrypt will store a salted, hashed version of our users' passwords in our
+database in a column called `password_digest`. Essentially, once a password is
+salted and hashed, there is no way for anyone to decode it. This method
+requires that hackers use a 'brute force' approach to gain access to someone's
+account –– still possible, but more difficult.
 
 ### Implementing BCrypt
 
-We've created a migration file for you, but you'll need to fill it in. For now, we'll use `def up` and `def down` methods for this lab, but note that you will often see `def change` now when generating migrations. Let's edit that file so that
-it actually creates a `users` table. We'll have two columns: one for `username`
-and one for `password_digest`.
+We've created a migration file for you, but you'll need to fill it in. For now,
+we'll use `def up` and `def down` methods for this lab, but note that you will
+often see `def change` now when generating migrations. Let's edit that file so
+that it actually creates a `users` table. We'll have two columns: one for
+`username` and one for `password_digest`.
 
 ```ruby
 class CreateUsers < ActiveRecord::Migration[5.1]
@@ -58,7 +81,8 @@ Run this migration using `rake db:migrate`. Preview your work by running
 `shotgun` and navigating to [localhost:9393](http://localhost:9393/) in your
 browser. Awesome job!
 
-**_NOTE_**: If you're in the Learn IDE, instead of going to [localhost:9393](http://localhost:9393/) you'll navigate to the URL output by
+**_NOTE_**: If you're in the Learn IDE, instead of going to
+[localhost:9393](http://localhost:9393/) you'll navigate to the URL output by
 the `shotgun` command.
 
 ### ActiveRecord's `has_secure_password`
@@ -138,13 +162,15 @@ post "/login" do
 end
 ```
 
-We also need to check if that user's password matches up with the value in `password_digest`. We can use a method called `authenticate`, which is also
-provided for us by adding `has_secure_password` to our User model. Our `authenticate` method takes a
-string as an argument. If the string matches up against the password digest,
-it will return the user object, otherwise it will return false. Therefore, we
-can check that we have a user AND that the user is authenticated. If so, we'll
-set the `session[:user_id]` and redirect to the `/success` route. Otherwise, 
-we'll redirect to the `/failure` route so our user can try again.
+We also need to check if that user's password matches up with the value in
+`password_digest`. We can use a method called `authenticate`, which is also
+provided for us by adding `has_secure_password` to our User model. Our
+`authenticate` method takes a string as an argument. If the string matches up
+against the password digest, it will return the user object, otherwise it will
+return false. Therefore, we can check that we have a user AND that the user is
+authenticated. If so, we'll set the `session[:user_id]` and redirect to the
+`/success` route. Otherwise, we'll redirect to the `/failure` route so our user
+can try again.
 
 ```ruby
 post "/login" do
