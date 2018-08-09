@@ -64,16 +64,16 @@ that it actually creates a `users` table. We'll have two columns: one for
 
 ```ruby
 class CreateUsers < ActiveRecord::Migration[5.1]
-	def up
-		create_table :users do |t|
-			t.string :username
-			t.string :password_digest
-		end
-	end
+  def up
+    create_table :users do |t|
+      t.string :username
+      t.string :password_digest
+    end
+  end
 
-	def down
-		drop_table :users
-	end
+  def down
+    drop_table :users
+  end
 end
 ```
 
@@ -100,7 +100,7 @@ plain text password in the database.
 
 ```ruby
 class User < ActiveRecord::Base
-	has_secure_password
+  has_secure_password
 end
 ```
 
@@ -112,7 +112,7 @@ can read more about that in the [Ruby Docs](http://api.rubyonrails.org/classes/A
 
 ```ruby
 post "/signup" do
-	user = User.new(:username => params[:username], :password => params[:password])
+  user = User.new(:username => params[:username], :password => params[:password])
 end
 ```
 
@@ -125,13 +125,13 @@ successfully).
 
 ```ruby
 post "/signup" do
-	user = User.new(:username => params[:username], :password => params[:password])
+  user = User.new(:username => params[:username], :password => params[:password])
 
-	if user.save
-		redirect "/login"
-	else
-		redirect "/failure"
-	end
+  if user.save
+    redirect "/login"
+  else
+    redirect "/failure"
+  end
 end
 ```
 
@@ -144,7 +144,7 @@ Next, create at least one valid user, then let's build out our login action. In
 
 ```ruby
 post "/login" do
-	user = User.find_by(:username => params[:username])
+  user = User.find_by(:username => params[:username])
 end
 ```
 
@@ -153,12 +153,12 @@ username? This can be written as `user != nil` or simply `user`.
 
 ```ruby
 post "/login" do
-	user = User.find_by(:username => params[:username])
-	if user
-		redirect "/success"
-	else
-		redirect "/failure"
-	end
+  user = User.find_by(:username => params[:username])
+  if user
+    redirect "/success"
+  else
+    redirect "/failure"
+  end
 end
 ```
 
@@ -174,14 +174,14 @@ can try again.
 
 ```ruby
 post "/login" do
-	user = User.find_by(:username => params[:username])
+  user = User.find_by(:username => params[:username])
 
-	if user && user.authenticate(params[:password])
-		session[:user_id] = user.id
-		redirect "/success"
-	else
-		redirect "/failure"
-	end
+  if user && user.authenticate(params[:password])
+    session[:user_id] = user.id
+    redirect "/success"
+  else
+    redirect "/failure"
+  end
 end
 ```
 
