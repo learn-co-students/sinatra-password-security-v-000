@@ -4,7 +4,10 @@ source "https://rubygems.org"
 gem "sinatra"
 gem "activerecord", '<= 5.1'
 gem "sinatra-activerecord"
+gem 'sinatra-contrib'
 gem "rake"
+gem 'rack'
+gem 'logger'
 gem "bcrypt"
 gem "rspec"
 gem "require_all"
@@ -16,4 +19,3 @@ gem 'shotgun'
 group :development do
   gem "tux"
 end
-
