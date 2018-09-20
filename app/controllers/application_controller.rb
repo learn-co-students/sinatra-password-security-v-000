@@ -17,7 +17,12 @@ class ApplicationController < Sinatra::Base
 	end
 
 	post "/signup" do
-		#your code here!
+		user = User.new(:username => params[:username], :password => params[:password])
+		if user.save
+    	redirect "/login"
+  	else #will return false if user can't be saved b/c no pw
+    	redirect "/failure"
+  	end
 	end
 
 	get "/login" do
@@ -25,7 +30,14 @@ class ApplicationController < Sinatra::Base
 	end
 
 	post "/login" do
-		#your code here!
+		user = User.find_by(:username => params[:username])
+		if user && user.authenticate(params[:password])
+			#checks if we found a user with that username and that it's authenticated (w/ authenticate method that comes with has_secure_password macro)
+    	session[:user_id] = user.id
+    	redirect "/success"
+  	else
+    	redirect "/failure"
+  	end
 	end
 
 	get "/success" do
