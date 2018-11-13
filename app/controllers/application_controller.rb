@@ -17,16 +17,29 @@ class ApplicationController < Sinatra::Base
 	end
 
 	post "/signup" do
-		#your code here!
+		@user = User.new(username: params[:username],password: params[:password])
+		if @user.save #save method always runs validations - if any fail then the action is cancelled and returns false
+			redirect '/login'
+		else
+			redirect '/failure'
+		end
 	end
 
 	get "/login" do
 		erb :login
 	end
 
+
 	post "/login" do
-		#your code here!
+		valid_user = User.find_by(username: params[:username])
+		if valid_user && valid_user.authenticate(params[:password])
+			session[:id] = valid_user.id
+			redirect '/success'
+		else
+			redirect '/failure'
+		end
 	end
+
 
 	get "/success" do
 		if logged_in?
@@ -35,6 +48,7 @@ class ApplicationController < Sinatra::Base
 			redirect "/login"
 		end
 	end
+
 
 	get "/failure" do
 		erb :failure
@@ -47,11 +61,14 @@ class ApplicationController < Sinatra::Base
 
 	helpers do
 		def logged_in?
-			!!session[:user_id]
+			!!session[:id]
+			#Used to convert a value into a Boolean.
+			#It returns true if the object on the right is not nil and not false,
+			#false if it is nil or false
 		end
 
 		def current_user
-			User.find(session[:user_id])
+			User.find(session[:id])
 		end
 	end
 
