@@ -10,7 +10,10 @@
 
 Securing users' data is one of the most important jobs of a web developer.
 Despite frequent warnings against it, many of your users will use the same
-username and password combination across many different websites. This means
+username and password
+
+
+combination across many different websites. This means
 that, in general, people will use the same password for our applications that
 they do for their bank.
 
