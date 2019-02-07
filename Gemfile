@@ -10,10 +10,10 @@ gem "rspec"
 gem "require_all"
 gem "capybara"
 gem "pry"
-gem "sqlite3"
+gem "sqlite3", '~>1.3.6'
+
 gem 'shotgun'
 
 group :development do
   gem "tux"
 end
-
