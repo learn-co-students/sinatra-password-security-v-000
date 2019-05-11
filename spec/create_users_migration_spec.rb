@@ -1,4 +1,5 @@
-require_relative '../db/migrate/20180314210852_create_users.rb'
+require_relative '../db/migrate/20190511212214_create_users.rb'
+
 
 require_relative 'spec_helper'
 
@@ -17,4 +18,3 @@ describe 'user' do
     expect(User.where(username: "Steven").first).to eq(user)
   end
 end
-
