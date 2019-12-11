@@ -34,7 +34,7 @@ the presence of a `session[:user_id]`, and `current_user` returns the instance
 of the logged in user, based on the `session[:user_id]`. We have six actions
 defined:
 
-* `get "/" do` renders an `index.erb` file with links to signup or login.
+* `get "/"` renders an `index.erb` file with links to signup or login.
 * `get '/signup'` renders a form to create a new user. The form includes fields for `username` and `password`.
 * `get '/login'` renders a form for logging in.
 * `get '/success'` renders a `success.erb` page, which should be displayed once a user successfully logs in.
