@@ -166,7 +166,7 @@ We also need to check if that user's password matches up with the value in
 `password_digest`. Users must have both an account _and_ know the password.
 
 We validate password match by using a method called `authenticate` on our
-`User` model. We do not have write this method ourselves. Rather when we added
+`User` model. We do not have to write this method ourselves. Rather when we added
 the line of code to `User`:
 
 ```ruby
