@@ -186,8 +186,8 @@ program runs. While we, as programmers can't see it, **it will be there**.
 > Using metaprogramming is controversial, though. On the one hand, it can save
 > developers time. On the other, and we see that in this lesson, it would be
 > nice to point to where on some line, in some file, the `authenticate` method
-> was defined. Reasonable developers can have difference on opinion as to
-> whether to use metaprogramming. Understanding metaprogramming perfectly  is
+> was defined. Reasonable developers can have differences of opinion as to
+> whether to use metaprogramming. Understanding metaprogramming perfectly is
 > _not_ essential to being a Ruby or Rails developer.
 
 Let's step through the process of how `User`'s `authenticate` method works. It:
